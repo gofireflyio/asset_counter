@@ -1,4 +1,0 @@
-2024-05-16 14:13:50,008 - ERROR - Command error for acme-gcp-dev - accesscontextmanager.googleapis.com/AuthorizedOrgsDesc: ERROR: (gcloud.asset.list) INVALID_ARGUMENT: Request contains an invalid argument.
-2024-05-16 14:18:49,696 - ERROR - Command error for acme-gcp-prod - accesscontextmanager.googleapis.com/AuthorizedOrgsDesc: ERROR: (gcloud.asset.list) INVALID_ARGUMENT: Request contains an invalid argument.
-2024-05-16 14:23:44,761 - ERROR - Command error for sales-engineering-405316 - accesscontextmanager.googleapis.com/AuthorizedOrgsDesc: ERROR: (gcloud.asset.list) INVALID_ARGUMENT: Request contains an invalid argument.
-2024-05-16 14:28:24,929 - ERROR - Command error for se-firefly - accesscontextmanager.googleapis.com/AuthorizedOrgsDesc: ERROR: (gcloud.asset.list) INVALID_ARGUMENT: Request contains an invalid argument.
