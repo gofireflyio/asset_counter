@@ -1,55 +1,63 @@
-# GCP Asset Counter Script
+# Cloud Asset Counter
 
-This script counts GCP assets across all projects within a specified Google Cloud Platform (GCP) organization. It handles rate limiting and permission issues gracefully, providing detailed logs and a summary of the results.
+The goal of this project is to count assets in various cloud environments, handling rate limits and permissions effectively. This project includes scripts for both Azure and Google Cloud Platform (GCP).
 
-## Summary
+## Scripts
 
-The `gcp_assets_byType_v1.py` script is designed to count various types of assets in all projects under a specified GCP organization. The results, including any errors encountered, are logged and a summary is provided at the end of the execution.
+### Azure Asset Counter
 
-## Prerequisites
+This script counts assets across all subscriptions and resource groups in Azure, leveraging Azure CLI commands and Python's concurrency features.
 
-Before running the script, ensure you have the following:
+#### Usage
 
-1. **Python 3.6 or higher**: Check your Python version using `python3 --version`.
-2. **Google Cloud SDK**: Install and initialize the Google Cloud SDK. Follow the [installation guide](https://cloud.google.com/sdk/docs/install) if you haven't already done so.
-3. **Google API Client Libraries**: Install the required Python libraries using `pip`.
+1. Create a file containing the asset types to be checked. Each line in the file should represent a different asset type.
 
-## Installation
+    Example `assets.txt`:
 
-1. **Clone the repository** (if applicable):
-   ```bash
-   git clone https://github.com/your-repo/gcp-asset-counter-script.git
-   cd gcp-asset-counter-script
+    ```
+    Microsoft.Compute/virtualMachines
+    Microsoft.Storage/storageAccounts
+    ```
 
-2.	**Install the required Python libraries:**
-    pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib tqdm
+2. Run the script with the following command:
 
-3.	**Authenticate with Google Cloud:**
-Ensure you are authenticated with your Google Cloud account. Run:
-    ```gcloud auth application-default login
+    ```bash
+    python azure_asset_counter.py assets.txt
+    ```
 
-## Usage
+3. To enable debug output for more verbose information, use the `--debug` flag:
 
-1.	**Prepare the Asset Types file:**
-Use the included asset_types.txt file to scan for all listed asset_types
+    ```bash
+    python azure_asset_counter.py assets.txt --debug
+    ```
 
-2.	**Run the script:**
-Use the following command to run the script, specifying your organization ID and the path to your Asset Types file:
-    python3 gcp_assets_byType_v1.py <org_id> <asset_file> [--debug]
+For more information, refer to the [Azure Asset Counter README](azure_asset_counter/README.md).
 
-Example Command:
-python3 gcp_assets_byType_v1.py 11111222233334 asset_types.txt --debug
+### GCP Asset Counter
 
-## Outputs
+This script counts assets across all projects within a specified Google Cloud Platform (GCP) organization, handling API limits and permissions.
 
-1.	**Console Output:**
-	•	A progress bar that shows the status of asset counting.
-	•	A summary of asset counts per project and the grand total at the end of the execution.
-2.	**Files:**
-	•	asset_count.txt: Contains detailed counts of each asset type per project and a summary of the total assets.
-	•	debug.log: Contains detailed logs of the script’s execution, including any errors encountered. This file is always generated, but more detailed logs are included when the --debug flag is used.
+#### Usage
 
-## Logging and Error Handling
+1. Create a file containing the asset types to be checked. Each line in the file should represent a different asset type.
 
-	•	Debug Log: Detailed logs are written to debug.log for every run.
-	•	Permission and API Errors: Errors related to permissions or APIs not being enabled are logged and handled gracefully, allowing the script to continue counting other assets.
+    Example `assets.txt`:
+
+    ```
+    compute.googleapis.com/Instance
+    storage.googleapis.com/Bucket
+    ```
+
+2. Run the script with the following command:
+
+    ```bash
+    python gcp_asset_counter.py <org_id> assets.txt
+    ```
+
+3. To enable debug output for more verbose information, use the `--debug` flag:
+
+    ```bash
+    python gcp_asset_counter.py <org_id> assets.txt --debug
+    ```
+
+For more information, refer to the [GCP Asset Counter README](gcp_asset_counter/README.md).
