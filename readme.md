@@ -31,7 +31,7 @@ This script counts assets across all subscriptions and resource groups in Azure,
     python azure_asset_counter.py assets.txt --debug
     ```
 
-For more information, refer to the [Azure Asset Counter README]([azure_asset_counter/README.md](https://github.com/gofireflyio/asset_counter/blob/main/Azure/readme.md)).
+For more information, refer to the Azure Asset Counter README.
 
 ### GCP Asset Counter
 
@@ -60,4 +60,4 @@ This script counts assets across all projects within a specified Google Cloud Pl
     python gcp_asset_counter.py <org_id> assets.txt --debug
     ```
 
-For more information, refer to the [GCP Asset Counter README](gcp_asset_counter/README.md).
+For more information, refer to the GCP Asset Counter README.
